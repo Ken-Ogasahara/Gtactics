@@ -33,6 +33,17 @@ class ElementsController < ApplicationController
   end
 
   def destroy
+    @element = Element.find(params[:id])
+    if  @element.destroy
+      flash[:notice] = "要素を削除しました。"
+      redirect_to edit_tactic_path(@element.tactic_id)
+    else
+      flash[:notice] = "要素の削除に失敗しました。"
+      redirect_to edit_tactic_path(@element.tactic_id)
+    end
+  end
+
+  def save_position
   end
 
   private

@@ -12,12 +12,14 @@
       <%= f.select :side, Element.sides_i18n.keys.map { |k| [t("enums.element.side.#{k}"), k] } %>
     </div>
 
-    <div class="btn-wrapper col-2 mx-auto">
+    <div class="btn-wrapper col-3 mx-auto">
 
       <div class="actions">
         <%= link_to "戻る", edit_tactic_path(@element.tactic_id), method: :get, class: 'btn-sm btn-secondary' %>
 
         <%= f.submit "更新", class: 'btn-sm btn-success' %>
+
+        <%= link_to "削除", element_path(@element.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
       </div>
     </div>
   <% end %>
