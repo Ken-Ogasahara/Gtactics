@@ -1,0 +1,24 @@
+<div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+  <h1>要素編集</h1>
+
+  <%= form_with model: @element, url: element_path, method: :patch do |f| %>
+    <div class="field">
+      <%= f.label :name,"要素名" %>
+      <%= f.text_field :name, required: true, autofocus: true %>
+    </div>
+
+    <div class="field">
+      <%= f.label :side,"陣営" %>
+      <%= f.select :side, Element.sides_i18n.keys.map { |k| [t("enums.element.side.#{k}"), k] } %>
+    </div>
+
+    <div class="btn-wrapper col-2 mx-auto">
+
+      <div class="actions">
+        <%= link_to "戻る", edit_tactic_path(@element.tactic_id), method: :get, class: 'btn-sm btn-secondary' %>
+
+        <%= f.submit "更新", class: 'btn-sm btn-success' %>
+      </div>
+    </div>
+  <% end %>
+</div>

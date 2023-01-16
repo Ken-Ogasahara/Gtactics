@@ -1,0 +1,31 @@
+<div class="mx-auto col-11 col-sm-10 col-lg-8 col-xl-6">
+    <h1>戦術ボード一覧</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <td>ボード追加</td>
+                <td>
+                  <%= link_to "＋", new_tactic_path, method: :get, class: 'btn btn-sm btn-primary' %>
+                </td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @tactics.each do |tactic| %>
+            <tr>
+                <td><%= tactic.name %></td>
+                <td>
+                  <%= link_to "編集", edit_tactic_path(tactic.id), method: :get, class: 'btn btn-sm btn-success' %>
+                  <%= link_to "削除", tactic_path(tactic.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
+                </td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+
+    <div class="field_area">
+
+    </div>
+
+</div>
