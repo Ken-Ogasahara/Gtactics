@@ -11,6 +11,8 @@
     font-size: 20px;
     font-weight: bolder;
     color: #FFFFFF;
+    width: 60px;
+    height: 60px;
 }
 
 .drag {
@@ -19,17 +21,11 @@
 
 #friend {
   background-color: red;
-  width: 60px;
-  height: 60px;
 }
 #enemy {
   background-color: blue;
-  width: 120px;
-  height: 120px;
 }
 #gimmick {
   background-color: purple;
-  width: 60px;
-  height: 60px;
 }
 

@@ -19,7 +19,7 @@ class TacticsController < ApplicationController
     @tactic = Tactic.find(params[:id])
     @tactics = current_user.tactics.page(params[:page])
     @field = Field.find(@tactic.field_id)
-    @elements = @tactic.elements.page(params[:page])
+    @elements = @tactic.elements.order(:name)
   end
 
   def update
