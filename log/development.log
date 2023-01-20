@@ -11590,3 +11590,34 @@ Processing by ActiveStorage::DiskController#show as JPEG
 Completed 200 OK in 1ms (ActiveRecord: 0.0ms | Allocations: 279)
 
 
+Started GET "/tactics/new" for 36.13.63.161 at 2023-01-20 06:39:50 +0000
+Cannot render console from 36.13.63.161! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TacticsController#new as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tactics/new.html.erb within layouts/application
+  [1m[36mField Load (0.1ms)[0m  [1m[34mSELECT "fields".* FROM "fields"[0m
+  ↳ app/views/tactics/new.html.erb:12
+  Rendered tactics/new.html.erb within layouts/application (Duration: 4.7ms | Allocations: 1453)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3309)
+Completed 200 OK in 13ms (Views: 8.9ms | ActiveRecord: 0.2ms | Allocations: 4932)
+
+
+Started GET "/tactics" for 36.13.63.161 at 2023-01-20 07:01:04 +0000
+Cannot render console from 36.13.63.161! Allowed networks: 127.0.0.0/127.255.255.255, ::1
+Processing by TacticsController#index as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = ? ORDER BY "users"."id" ASC LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering tactics/index.html.erb within layouts/application
+  [1m[36mTactic Load (0.5ms)[0m  [1m[34mSELECT "tactics".* FROM "tactics" WHERE "tactics"."user_id" = ?[0m  [["user_id", "1"]]
+  ↳ app/views/tactics/index.html.erb:15
+  Rendered tactics/index.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1637)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 10.3ms | Allocations: 4272)
+Completed 200 OK in 20ms (Views: 11.7ms | ActiveRecord: 1.1ms | Allocations: 8141)
+
+
