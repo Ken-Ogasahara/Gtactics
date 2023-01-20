@@ -43,7 +43,7 @@
 
     <div class="field_area col-lg-8">
         <% @elements.each do |element| %>
-            <div class="drag-and-drop" id="<%= element.side %>"><%= element.name %></div>
+            <div class="drag-and-drop" id="<%= element.side %>" value="<%= element.name %>" style="top: <%= element.y_coordinate %>; left: <%= element.x_coordinate %>;"><%= element.name %></div>
         <% end %>
         <%= image_tag @field.get_image(700,700) %>
     </div>
@@ -69,9 +69,13 @@
 
         <%= paginate @elements %>
 
-        <%= form_with model: @element, url: element_path, method: :patch do |f| %>
+        <%= form_with model: @tactic, url: tactic_elements_path(@tactic), method: :patch do |f| %>
         <div class="form-group mt-3 text-right">
             <% if @elements.present? %>
+            <% @elements.each do |element| %>
+                <%= hidden_field_tag "elements[#{element.id}][x_coordinate]", element.x_coordinate,:id => "#{element.name}_x_field" %>
+                <%= hidden_field_tag "elements[#{element.id}][y_coordinate]", element.y_coordinate,:id => "#{element.name}_y_field" %>
+            <% end %>
                 <%= f.submit "位置保存", class: "btn-sm btn-success" %>
             <% end %>
         </div>

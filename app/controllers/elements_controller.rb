@@ -23,6 +23,7 @@ class ElementsController < ApplicationController
 
   def update
     @element = Element.find(params[:id])
+    # @element = Element.find_by(params[:name])
     if  @element.update(element_params)
       flash[:notice] = "要素を更新しました。"
       redirect_to edit_tactic_path(@element.tactic_id)
@@ -41,9 +42,6 @@ class ElementsController < ApplicationController
       flash[:notice] = "要素の削除に失敗しました。"
       redirect_to edit_tactic_path(@element.tactic_id)
     end
-  end
-
-  def save_position
   end
 
   private
