@@ -1,0 +1,35 @@
+@import '~bootstrap/scss/bootstrap';
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body {
+  background-image: url("../images/hoge.jpg");
+}
+
+.drag-and-drop {
+    cursor: move;
+    position: absolute;
+    z-index: 1000;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 20px;
+    font-weight: bolder;
+    color: #FFFFFF;
+    width: 60px;
+    height: 60px;
+}
+
+.drag {
+    z-index: 1001;
+}
+
+#friend {
+  background-color: red;
+}
+#enemy {
+  background-color: blue;
+}
+#gimmick {
+  background-color: purple;
+}
+
