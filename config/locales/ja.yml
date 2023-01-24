@@ -1,7 +1,0 @@
-  ja:
-    enums:
-      element:
-        side:
-          friend: "自チーム"
-          enemy: "敵チーム"
-          gimmick: "ギミック"
