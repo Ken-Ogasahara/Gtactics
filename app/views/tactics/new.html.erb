@@ -9,7 +9,7 @@
 
     <div class="field">
       <%= f.label :field_id,"フィールド", required: true %>
-      <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name), include_blank: "--選択して下さい--", required: true %><br>
+      <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name), required: true %><br>
     </div>
 
     <div class="btn-wrapper col-2 mx-auto">
