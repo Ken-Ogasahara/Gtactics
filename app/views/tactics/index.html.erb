@@ -8,6 +8,8 @@
         <td>
           <%= link_to "＋", new_tactic_path, method: :get, class: 'btn btn-sm btn-primary' %>
         </td>
+        <td>作成日時</td>
+        <td>更新日時</td>
       </tr>
     </thead>
 
@@ -19,6 +21,8 @@
           <%= link_to "編集", edit_tactic_path(tactic.id), method: :get, class: 'btn btn-sm btn-success' %>
           <%= link_to "削除", tactic_path(tactic.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: 'btn btn-sm btn-danger' %>
         </td>
+        <td><%= tactic.created_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
+        <td><%= tactic.updated_at.strftime('%Y/%m/%d %H:%M:%S') %></td>
       </tr>
       <% end %>
     </tbody>
