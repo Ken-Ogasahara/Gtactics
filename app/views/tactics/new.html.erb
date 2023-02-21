@@ -2,23 +2,27 @@
   <h1>新規ボード作成</h1>
 
   <%= form_with model: @tactic, url: tactics_path, method: :post do |f| %>
-    <div class="field">
-      <%= f.label :name,"戦術名" %>
-      <%= f.text_field :name, required: true, autofocus: true %>
+  
+  <table class="col-6 mx-auto">
+    
+    <tr class="field">
+      <td><%= f.label :name,"戦術名" %></td>
+      <td><%= f.text_field :name, required: true, autofocus: true %></td>
+    </tr>
+
+    <tr class="field">
+      <td><%= f.label :field_id,"フィールド", required: true %></td>
+      <td><%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name), required: true %></td>
+    </tr>
+  </table>
+
+  <div class="btn-wrapper col-2 mx-auto">
+
+    <div class="actions">
+      <%= link_to "一覧", tactics_path, method: :get, class: 'btn-sm btn-secondary' %>
+
+      <%= f.submit "作成", class: 'btn-sm btn-success' %>
     </div>
-
-    <div class="field">
-      <%= f.label :field_id,"フィールド", required: true %>
-      <%= f.select :field_id, options_from_collection_for_select(Field.all, :id, :name), required: true %><br>
-    </div>
-
-    <div class="btn-wrapper col-2 mx-auto">
-
-      <div class="actions">
-        <%= link_to "一覧", tactics_path, method: :get, class: 'btn-sm btn-secondary' %>
-
-        <%= f.submit "作成", class: 'btn-sm btn-success' %>
-      </div>
-    </div>
+  </div>
   <% end %>
 </div>

@@ -2,25 +2,29 @@
   <h1>要素追加</h1>
 
   <%= form_with model: @element, url: elements_path, method: :post do |f| %>
-    <div class="field">
-      <%= f.label :name,"要素名" %>
-      <%= f.text_field :name, required: true, autofocus: true %>
-    </div>
+  
+  <table class="col-6 mx-auto">
+    
+    <tr class="field">
+      <td><%= f.label :name,"要素名" %></td>
+      <td><%= f.text_field :name, required: true, autofocus: true %></td>
+    </tr>
 
-    <div class="field">
-      <%= f.label :side,"陣営" %>
-      <%= f.select :side, Element.sides_i18n.keys.map { |k| [t("enums.element.side.#{k}"), k] } %>
-    </div>
+    <tr class="field">
+      <td><%= f.label :side,"陣営" %></td>
+      <td><%= f.select :side, Element.sides_i18n.keys.map { |k| [t("enums.element.side.#{k}"), k] } %></td>
+    </tr>
+  </table>
 
-    <div class="btn-wrapper col-2 mx-auto">
+  <div class="btn-wrapper col-2 mx-auto">
 
-      <div class="actions">
-        <%= link_to "戻る", edit_tactic_path(@tactic_id), method: :get, class: 'btn-sm btn-secondary' %>
+    <div class="actions">
+      <%= link_to "戻る", edit_tactic_path(@tactic_id), method: :get, class: 'btn-sm btn-secondary' %>
 
-        <%= f.hidden_field  :tactic_id, :value => @tactic_id %>
+      <%= f.hidden_field  :tactic_id, :value => @tactic_id %>
         
-        <%= f.submit "作成", class: 'btn-sm btn-success' %>
-      </div>
+      <%= f.submit "作成", class: 'btn-sm btn-success' %>
     </div>
+  </div>
   <% end %>
 </div>

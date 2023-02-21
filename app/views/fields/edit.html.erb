@@ -2,23 +2,27 @@
   <h1>フィールド編集</h1>
 
   <%= form_with model: @field, url: field_path, method: :patch do |f| %>
-    <div class="field">
-      <%= f.label :name,"フィールド名" %>
-      <%= f.text_field :name, required: true, autofocus: true %>
+  
+  <table class="col-6 mx-auto">
+    
+    <tr class="field">
+      <td><%= f.label :name,"フィールド名" %></td>
+      <td><%= f.text_field :name, required: true, autofocus: true %></td>
+    </tr>
+      
+    <tr class="field">
+      <td><%= f.label :image,"画像" %></td>
+      <td><%= f.file_field :image, accept: "image/*" %></td>
+    </tr>
+  </table>
+
+  <div class="btn-wrapper col-2 mx-auto">
+
+    <div class="actions">
+      <%= link_to "戻る", fields_path, method: :get, class: 'btn-sm btn-secondary' %>
+
+      <%= f.submit "更新", class: 'btn-sm btn-success' %>
     </div>
-
-    <div class="field">
-      <%= f.label :image,"画像" %>
-      <%= f.file_field :image, accept: "image/*" %>
-    </div>
-
-    <div class="btn-wrapper col-2 mx-auto">
-
-      <div class="actions">
-        <%= link_to "戻る", fields_path, method: :get, class: 'btn-sm btn-secondary' %>
-
-        <%= f.submit "更新", class: 'btn-sm btn-success' %>
-      </div>
-    </div>
+  </div>
   <% end %>
 </div>
