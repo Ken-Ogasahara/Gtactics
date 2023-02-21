@@ -24,11 +24,16 @@ class TacticsController < ApplicationController
 
   def update
     @tactic = Tactic.find(params[:id])
-    if  @tactic.update(tactic_params)
-      flash[:notice] = "戦術名を変更しました。"
-      redirect_to edit_tactic_path(@tactic.id)
+    if @tactic.user_id.to_i == current_user.id
+      if  @tactic.update(tactic_params)
+        flash[:notice] = "戦術名を変更しました。"
+        redirect_to edit_tactic_path(@tactic.id)
+      else
+        flash[:notice] = "戦術名を変更できませんでした。"
+        redirect_to edit_tactic_path(@tactic.id)
+      end
     else
-      flash[:notice] = "戦術名を変更できませんでした。"
+      flash[:notice] = "他ユーザーの戦術ボードのため変更不可です。"
       redirect_to edit_tactic_path(@tactic.id)
     end
   end

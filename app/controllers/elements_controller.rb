@@ -23,23 +23,33 @@ class ElementsController < ApplicationController
 
   def update
     @element = Element.find(params[:id])
+    if Tactic.find(@element.tactic_id).user_id.to_i == current_user.id
     # @element = Element.find_by(params[:name])
-    if  @element.update(element_params)
-      flash[:notice] = "要素を更新しました。"
-      redirect_to edit_tactic_path(@element.tactic_id)
+      if  @element.update(element_params)
+        flash[:notice] = "要素を更新しました。"
+        redirect_to edit_tactic_path(@element.tactic_id)
+      else
+        flash[:notice] = "要素の更新に失敗しました。"
+        redirect_to edit_tactic_path(@element.tactic_id)
+      end
     else
-      flash[:notice] = "要素の更新に失敗しました。"
+      flash[:notice] = "他ユーザーの要素のため変更不可です。"
       redirect_to edit_tactic_path(@element.tactic_id)
     end
   end
 
   def destroy
     @element = Element.find(params[:id])
-    if  @element.destroy
-      flash[:notice] = "要素を削除しました。"
-      redirect_to edit_tactic_path(@element.tactic_id)
+    if Tactic.find(@element.tactic_id).user_id.to_i == current_user.id
+      if  @element.destroy
+        flash[:notice] = "要素を削除しました。"
+        redirect_to edit_tactic_path(@element.tactic_id)
+      else
+        flash[:notice] = "要素の削除に失敗しました。"
+        redirect_to edit_tactic_path(@element.tactic_id)
+      end
     else
-      flash[:notice] = "要素の削除に失敗しました。"
+      flash[:notice] = "他ユーザーの要素のため削除不可です。"
       redirect_to edit_tactic_path(@element.tactic_id)
     end
   end
